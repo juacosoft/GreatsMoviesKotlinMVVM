@@ -43,12 +43,12 @@ interface MoviesDao contiene las sentencias SQLite pertinentes para: insercion d
 
 * Android studio Artic Fox </br>
 // Fragment
-   # implementation "androidx.fragment:fragment-ktx:1.3.2"
-   #implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
-   #implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
-   #// Activity
-   #implementation "androidx.activity:activity-ktx:1.2.2"
-    // ViewModel
+   *implementation "androidx.fragment:fragment-ktx:1.3.2"
+   *implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+   *implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+   *// Activity
+   *implementation "androidx.activity:activity-ktx:1.2.2"
+   *// ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
     // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
