@@ -31,7 +31,7 @@ Requerimientos completados (Para Peliculas unicamente)
 </ul>
 
 
-## Desarrollado en java android MVVM, RxAndroid, Dagger 2, RxJava , ButterKnife, api desde https://developers.themoviedb.org proceso de consumo de respuestas JSON 
+## Desarrollado en java android MVVM, RxAndroid, Dagger Hilt, RxJava , ButterKnife, api desde https://developers.themoviedb.org proceso de consumo de respuestas JSON 
 
 #Consideraciones
 Basado en patron de diseño MVVM y programacion reactiva se realizo aplicacion online, la implementacion o sincronizacion de archivos de manera offline realizado 
