@@ -20,7 +20,7 @@ Requerimientos completados (Para Peliculas unicamente)
   <li>Bibliotecas usadas (ver Dependencias)</Li>
   <li>Subir proyecto a Girhub</Li>
   <li>La app debe ser Escalable : arquitectura usada MVVM (Model - View - View Model)</Li>
-  <li>Injectar Dependencias : Dagger 2</Li>
+  <li>Injectar Dependencias : Dagger Hilt</Li>
   <li>La app debe funcionar offline</li>
   <li>-Pruebas Unitarias</li>
 </ul> 
