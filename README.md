@@ -43,55 +43,55 @@ interface MoviesDao contiene las sentencias SQLite pertinentes para: insercion d
 
 * Android studio Artic Fox </br>
 // Fragment
-   *implementation "androidx.fragment:fragment-ktx:1.3.2"
-   *implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
-   *implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
-   *// Activity
-   *implementation "androidx.activity:activity-ktx:1.2.2"
-   *// ViewModel
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
-    // LiveData
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
+   * implementation "androidx.fragment:fragment-ktx:1.3.2"
+   * implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+   * implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+   * // Activity
+   * implementation "androidx.activity:activity-ktx:1.2.2"
+   * // ViewModel
+   * implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
+   * // LiveData
+   * implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
 
     // Retrofit
-    implementation "com.squareup.retrofit2:retrofit:2.9.0"
-    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
-    //Corrutinas
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.6'
-    //daggerhilt
-    implementation "com.google.dagger:hilt-android:$hilt_version"
-    implementation 'androidx.test.ext:junit-ktx:1.1.3'
-    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+   * implementation "com.squareup.retrofit2:retrofit:2.9.0"
+   * implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+   * //Corrutinas
+   * implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.6'
+   * //daggerhilt
+   * implementation "com.google.dagger:hilt-android:$hilt_version"
+   * implementation 'androidx.test.ext:junit-ktx:1.1.3'
+   * kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
 
-    //Room Library
-    //implementation "androidx.room:room-runtime:2.2.6"
-    implementation "androidx.room:room-ktx:2.3.0"
-    kapt "androidx.room:room-compiler:2.3.0"
-    kapt "android.arch.persistence.room:compiler:1.0.0-alpha4"
+   * //Room Library
+   * //implementation "androidx.room:room-runtime:2.2.6"
+   * implementation "androidx.room:room-ktx:2.3.0"
+   * kapt "androidx.room:room-compiler:2.3.0"
+   * kapt "android.arch.persistence.room:compiler:1.0.0-alpha4"
 
-    //Glide
-    implementation 'com.github.bumptech.glide:glide:4.12.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+   * //Glide
+   * implementation 'com.github.bumptech.glide:glide:4.12.0'
+   * annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
 
-    //Swipy
-    implementation "com.github.omadahealth:swipy:1.2.3@aar"
+   * //Swipy
+   * implementation "com.github.omadahealth:swipy:1.2.3@aar"
 
-    //ratingbar
-    implementation 'me.zhanghai.android.materialratingbar:library:1.4.0'
+   * //ratingbar
+   * implementation 'me.zhanghai.android.materialratingbar:library:1.4.0'
 
-    //youtube player
-    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
+   * //youtube player
+   * implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
 
 
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+   * testImplementation 'junit:junit:4.+'
+   * androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+   * androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-    testImplementation  "com.google.dagger:hilt-android-testing:$hilt_version"
-    testImplementation "org.robolectric:robolectric:4.7.2"
-    kaptTest "com.google.dagger:hilt-compiler:$hilt_version"
+   * testImplementation  "com.google.dagger:hilt-android-testing:$hilt_version"
+   * testImplementation "org.robolectric:robolectric:4.7.2"
+   * kaptTest "com.google.dagger:hilt-compiler:$hilt_version"
 
-    testImplementation 'com.squareup.okhttp3:mockwebserver:4.9.1'
+   * testImplementation 'com.squareup.okhttp3:mockwebserver:4.9.1'
     
     
 ### Installing</br>
