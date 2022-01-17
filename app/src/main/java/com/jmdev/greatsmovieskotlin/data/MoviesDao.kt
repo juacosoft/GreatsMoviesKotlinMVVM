@@ -23,6 +23,9 @@ interface MoviesDao {
     @Query("SELECT * FROM movies WHERE title LIKE '%' || :query || '%' COLLATE NOCASE")
     fun getLocalsearchMovies(query:String):Flow<List<MovieModel>>
 
+    @Query("SELECT * FROM movies WHERE title LIKE '%' || :query || '%' COLLATE NOCASE")
+    suspend fun getsearchLocalMovies(query:String):List<MovieModel>
+
     @Query("SELECT * FROM movies WHERE id=:id")
     suspend fun getMovie(id: Int):MovieModel
 

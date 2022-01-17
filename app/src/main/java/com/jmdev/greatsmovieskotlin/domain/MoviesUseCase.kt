@@ -18,5 +18,5 @@ class MoviesUseCase @Inject constructor(
     suspend fun invokeTopRatedMovies():List<MovieModel>?=repository.getTopratedMovies()
     suspend fun invokeDetailMovie():MovieDetailModel?=repository.getDetailMovie()
     suspend fun invokeTrailersMovie():List<TrailerModel>?=repository.getTrailersMovie()
-    suspend fun invokeSearchMovie():List<MovieModel>?=repository.searchMovie()
+    //suspend fun invokeSearchMovie():List<MovieModel>?=repository.searchMovie()
 }

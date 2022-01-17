@@ -1,14 +1,16 @@
 package com.jmdev.greatsmovieskotlin.data
 
 import android.util.Log
+import androidx.lifecycle.asLiveData
 import com.jmdev.greatsmovieskotlin.data.models.MovieDetailModel
 import com.jmdev.greatsmovieskotlin.data.models.MovieModel
 import com.jmdev.greatsmovieskotlin.data.models.TrailerModel
 import com.jmdev.greatsmovieskotlin.data.network.MovieService
 import com.jmdev.greatsmovieskotlin.util.networkBoundResource
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.emptyFlow
+import kotlinx.coroutines.flow.*
 
 import javax.inject.Inject
 
@@ -41,7 +43,6 @@ class MoviesRepository @Inject constructor(
             api.getTopratedMovies()
         },
         saveFetchResult = {movies->
-            //localMovies.deleteMovies()
             localMovies.insertMovies(movies)
             Log.d("MoviesRepository","$movies")
         }
@@ -60,22 +61,38 @@ class MoviesRepository @Inject constructor(
 
         }
     )
-    fun getSearchLocalRemoteMovie(query:String,page:Int)= networkBoundResource(
+    /*fun getSearchLocalRemoteMovie(query:String,page:Int)= networkBoundResource(
         query = {
             localMovies.getLocalsearchMovies(query)
         },
         fetch = {
-            delay(2000)
-            api.getSearchMovies()
+
+                api.getSearchMovies(query,page)
+                delay(2000)
+
+
         },
         saveFetchResult = {movie->
             Log.d("MoviesRepository","Getdetail: $movie")
             localMovies.insertMovies(movie)
 
         }
-    )
-
-
+    )*/
+    fun getSearchLocalRemoteMovie(query:String,page:Int,defaultDispatcher: CoroutineDispatcher) =
+        flow {
+            while (true){
+                val movies=api.getSearchMovies(query,page)
+                emit(movies)
+                delay(50000)
+            }
+        }.flowOn(defaultDispatcher)
+        .onEach {
+            Log.d("onEach","$it")
+            localMovies.insertMovies(it)
+        }.catch {exeption->
+            exeption.printStackTrace()
+            emit(localMovies.getsearchLocalMovies(query))
+        }
 
 
     suspend fun getMovieById(id:Int):MovieModel{
@@ -86,7 +103,6 @@ class MoviesRepository @Inject constructor(
         Log.d("MoviesRepository","$response")
         return response
     }
-
     suspend fun getPopularMovies():List<MovieModel>{
         val response=api.getPopularMovies()
         //localMovies.insertMovies(response)
@@ -109,9 +125,9 @@ class MoviesRepository @Inject constructor(
         Log.d("Trailers","$response")
         return response
     }
-    suspend fun searchMovie():List<MovieModel>{
+    /*suspend fun searchMovie():List<MovieModel>{
         val response=api.getSearchMovies()
         Log.d("SearchMovie","$response")
         return response
-    }
+    }*/
 }

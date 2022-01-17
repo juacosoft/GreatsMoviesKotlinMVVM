@@ -44,9 +44,9 @@ class MovieService @Inject constructor(
             response.body()?.results ?: emptyList()
         }
     }
-    suspend fun getSearchMovies():List<MovieModel>{
+    suspend fun getSearchMovies(query:String, page:Int):List<MovieModel>{
         return withContext(Dispatchers.IO){
-            val response=api.searchMovie(pageController.query,pageController.page)
+            val response=api.searchMovie(query,page)
             Log.d("Response","$response")
             response.body()?.results ?: emptyList()
         }

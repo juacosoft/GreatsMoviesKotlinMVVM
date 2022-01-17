@@ -2,6 +2,7 @@ package com.jmdev.greatsmovieskotlin.ui.components.adapters
 
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -52,9 +53,10 @@ class SeeMoreMovieAdapter (
             Log.d("SeeMoreMoviesAdapter","Bind: ${movieModel.title}")
             itemMovieBinding.itemmovieTitle.text=movieModel.title
             itemMovieBinding.itemmovieRate.rating=(movieModel.vote_average/2).toFloat()
+            itemMovieBinding.itemmovieTitle.visibility=if (movieModel.poster_path==null) View.VISIBLE else View.GONE
             Glide.with(itemView)
                 .load(ServerUrls.IMAGE_PATH + movieModel.poster_path)
-                .error(R.drawable.ic_placeholder_movie)
+                .error(R.drawable.no_image)
                 .into(itemMovieBinding.itemmoviePoster)
 
 

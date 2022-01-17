@@ -9,7 +9,7 @@ import com.jmdev.greatsmovieskotlin.data.models.MovieModel
 import com.jmdev.greatsmovieskotlin.data.models.TrailerModel
 
 
-@Database(entities = [MovieModel::class, MovieDetailModel::class,TrailerModel::class],version = 18,exportSchema = false)
+@Database(entities = [MovieModel::class, MovieDetailModel::class,TrailerModel::class],version = 21,exportSchema = false)
 @TypeConverters(ObjectConverters::class)
 abstract class AppDatabase :RoomDatabase() {
     abstract fun moviesDao():MoviesDao
