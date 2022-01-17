@@ -22,8 +22,6 @@ class NetworkConnection @Inject constructor(
     @ApplicationContext private val context: Context,
     ): LiveData<Boolean>() {
 
-
-
     private var connectivityManager: ConnectivityManager =
         context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 

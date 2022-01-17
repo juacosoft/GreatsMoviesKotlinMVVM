@@ -54,21 +54,36 @@ class SeeMoreMovieFragment : Fragment(),MovieSelected {
         callAndRefreshMovies(1)
         binding.refreshMovies.setOnRefreshListener {
             page+=1
-            callAndRefreshMovies(page)
+            //callAndRefreshMovies(page)
         }
 
         callObservers()
 
     }
     fun callObservers(){
+        seeMoreViewModel.getListMovies().observe(viewLifecycleOwner, Observer {movies->
+            movies.let {
+                listMovie?.clear()
+                listMovie?.addAll(it)
+                moviesAdapter.setList(listMovie!!)
+            }
+        })
+        seeMoreViewModel.isLoading.observe(viewLifecycleOwner, Observer {isLoading->
+            if(isLoading){
+                binding.pbSeemoreProgress.visibility=View.VISIBLE
+            }else{
+                binding.pbSeemoreProgress.visibility=View.GONE
+            }
+        })
 
-        seeMoreViewModel.popularList.observe(viewLifecycleOwner, Observer {result->
+        /*seeMoreViewModel.popularList.observe(viewLifecycleOwner, Observer {result->
             result.data?.let {
+                listMovie?.clear()
                 listMovie?.addAll(it)
                 moviesAdapter.setList(listMovie!!)
             }
             binding.pbSeemoreProgress.isVisible = result is Resource.Loading && result.data.isNullOrEmpty()
-        })
+        })*/
     }
 
     override fun onMovieSelected(movieModel: MovieModel) {
@@ -86,7 +101,6 @@ class SeeMoreMovieFragment : Fragment(),MovieSelected {
         var title="Search by: "
         when(option){
             "popular"->{
-
                 seeMoreViewModel.fecthAllMovies("popular",page,null)
                 title += "Popular"
             }
@@ -98,17 +112,14 @@ class SeeMoreMovieFragment : Fragment(),MovieSelected {
             "query"->{
                 query=arguments?.getString("querytext")!!
                 if(!query.isEmpty()){
-
                         seeMoreViewModel.fecthAllMovies("query",page,query.toLowerCase())
                     title += query
                 }
-
             }
             else ->{
                 Log.e("Error","no Opcion")
                 binding.tvSeemoreError.visibility=View.VISIBLE
             }
-
         }
         title.also { binding.tvSeemoreTitle.text = it }
     }

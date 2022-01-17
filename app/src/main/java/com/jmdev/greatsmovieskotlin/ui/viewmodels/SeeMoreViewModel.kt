@@ -7,10 +7,11 @@ import com.jmdev.greatsmovieskotlin.data.MoviesRepository
 import com.jmdev.greatsmovieskotlin.data.PageController
 import com.jmdev.greatsmovieskotlin.data.models.MovieModel
 import com.jmdev.greatsmovieskotlin.domain.MoviesUseCase
+import com.jmdev.greatsmovieskotlin.util.MoviesUiState
 import com.jmdev.greatsmovieskotlin.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.emptyFlow
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -22,6 +23,7 @@ class SeeMoreViewModel @Inject constructor(
 ) :ViewModel() {
 
     private val moviesList=MutableLiveData<List<MovieModel>>()
+    
     val isLoading=MutableLiveData<Boolean>()
     val isError=MutableLiveData<Boolean>()
 
@@ -33,6 +35,7 @@ class SeeMoreViewModel @Inject constructor(
     }
     lateinit var popularList : LiveData<Resource<List<MovieModel>>>
 
+
     fun fecthAllMovies(option:String,page:Int,queryText:String?) {
         pageController.page=page
         when(option){
@@ -43,15 +46,23 @@ class SeeMoreViewModel @Inject constructor(
                 popularList= repository.getTopRatedLocalRemote().asLiveData()
             }
             "query"->{
-
                 if(!queryText.isNullOrEmpty()){
-                    popularList= repository.getSearchLocalRemoteMovie(queryText,page).asLiveData()
-                }
+                    viewModelScope.launch {
+                        //_uiState.value=MoviesUiState.Loading(true)
+                        isLoading.postValue(true)
+                        repository.getSearchLocalRemoteMovie(queryText,page,Dispatchers.IO)
+                            .collect {
+                                it.also { moviesList.postValue(it) }
+                                isLoading.postValue(false)
+                            }
 
+                    }
+                    //popularList= repository.getSearchLocalRemoteMovie(queryText,page).asLiveData()
+
+                }
             }
             else ->{
                 Log.e("Error","no Opcion")
-
             }
 
         }
