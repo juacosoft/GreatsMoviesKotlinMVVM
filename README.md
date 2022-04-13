@@ -16,20 +16,13 @@ Requerimientos completados (Para Peliculas unicamente)
   <li>Buscador de Pelicula y/o serie por nombre</Li>
   <li>Visualizacion de video en Detalle</Li>  
   <li>Api https://developers.themoviedb.org/</Li>
-  <li>Usar Kotlin </Li>
-  <li>Bibliotecas usadas (ver Dependencias)</Li>
-  <li>Subir proyecto a Girhub</Li>
-  <li>La app debe ser Escalable : arquitectura usada MVVM (Model - View - View Model)</Li>
-  <li>Injectar Dependencias : Dagger Hilt</Li>
-  <li>La app debe funcionar offline</li>
+  <li>Lenguaje Kotlin </Li>
+  <li>Bibliotecas usadas (ver Dependencias)</Li>  
+  <li>App Escalable : arquitectura usada MVVM (Model - View - View Model)</Li>
+  <li>Injección de Dependencias : Dagger Hilt</Li>
+  <li>La app Funciona Ofline offline sincronizada con DAO </li>
   <li>-Pruebas Unitarias</li>
 </ul> 
--Requerimientos no Completados
-<ul>
- <li>transiciones /Animaciones entre un listado y detalle y carga inicial de peliculas (Recycler animation)</Li>
- 
-</ul>
-
 
 ## Desarrollado en java android MVVM, RxAndroid, Dagger Hilt, RxJava , ButterKnife, api desde https://developers.themoviedb.org proceso de consumo de respuestas JSON 
 
